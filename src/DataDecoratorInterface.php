@@ -48,5 +48,5 @@ interface DataDecoratorInterface
      * @param  array  $data
      * @return void
      */
-    public function merge(array $input);
+    public function merge(array $data);
 }

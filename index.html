@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Decorators by pushoperations</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Decorators</h1>
+        <p>A library to decorate arrays (especially Laravel&#39;s Input::) for manipulation and object construction.</p>
+
+        <p class="view"><a href="https://github.com/pushoperations/Decorators">View the Project on GitHub <small>pushoperations/Decorators</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/pushoperations/Decorators/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/pushoperations/Decorators/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/pushoperations/Decorators">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="decorators-name-may-change" class="anchor" href="#decorators-name-may-change" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decorators (Name May Change)</h1>
+
+<p><a href="https://travis-ci.org/pushoperations/Decorators"><img src="https://img.shields.io/travis/pushoperations/Decorators.svg" alt="Build Status"></a>
+<a href="https://coveralls.io/r/pushoperations/Decorators"><img src="https://img.shields.io/coveralls/pushoperations/Decorators.svg" alt="Coverage Status"></a>
+<a href="https://scrutinizer-ci.com/g/pushoperations/Decorators/?branch=master"><img src="https://img.shields.io/scrutinizer/g/pushoperations/Decorators.svg" alt="Scrutinizer Code Quality"></a></p>
+
+<p><a href="https://packagist.org/packages/pushoperations/Decorators"><img src="https://poser.pugx.org/pushoperations/decorators/downloads.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/pushoperations/Decorators"><img src="https://poser.pugx.org/pushoperations/decorators/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/pushoperations/Decorators"><img src="https://poser.pugx.org/pushoperations/decorators/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/pushoperations/Decorators"><img src="https://poser.pugx.org/pushoperations/decorators/license.svg" alt="License"></a></p>
+
+
+
+<p>A library to decorate arrays (especially Laravel's Input::) for manipulation and usage as a service to return data for object construction.</p>
+
+<p>Note: <em>this library may contain other patterns in the future</em>.</p>
+
+<h2>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h2>
+
+<ul>
+<li><a href="#install">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="http://pushoperations.github.io/Decorators/">API documentation</a></li>
+</ul>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<p>The recommended way to install is through <a href="http://getcomposer.org">Composer</a>.</p>
+
+<p>Update your project's composer.json file to include Decorators:</p>
+
+<div class="highlight highlight-json"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: {
+        <span class="pl-s1"><span class="pl-pds">"</span>pushoperations/decorators<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+
+<p>Then update the project dependencies to include this library:</p>
+
+<div class="highlight highlight-bash"><pre>composer update pushoperations/decorators</pre></div>
+
+<p>After installing, you need to require Composer's autoloader:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>vendor/autoload.php<span class="pl-pds">'</span></span>;</span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create your own decorator by:</p>
+
+<ul>
+<li>Extending from the <code>DataDecorator</code> abstract class</li>
+<li>Creating a constructor that accepts an array</li>
+<li>Optional: add methods that are specific to generating the array of data you need</li>
+</ul>
+
+<p>One use case is to split input data into different arrays for different factories to use for the construction of new objects.</p>
+
+<p>A handy effect is that you can perform sanitization within the decorator's methods before returning the data array.</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">Decorators\DataDecorator</span>;</span>
+<span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">Decorators\DataDecoratorInterface</span>;</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">BasicDecorator</span> <span class="pl-s">extends</span> <span class="pl-e">DataDecorator</span> <span class="pl-s">implements</span> <span class="pl-e">DataDecoratorInterface</span></span>
+<span class="pl-s2">{</span>
+<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-s3">__construct</span>(<span class="pl-st">array</span> <span class="pl-vo">$input</span>)</span>
+<span class="pl-s2">    {</span>
+<span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">data</span> <span class="pl-k">=</span> <span class="pl-vo">$input</span>;</span>
+<span class="pl-s2">    }</span>
+<span class="pl-s2">}</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ComplexDecorator</span> <span class="pl-s">extends</span> <span class="pl-e">DataDecorator</span> <span class="pl-s">implements</span> <span class="pl-e">DataDecoratorInterface</span></span>
+<span class="pl-s2">{</span>
+<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-s3">__construct</span>(<span class="pl-st">array</span> <span class="pl-vo">$input</span>)</span>
+<span class="pl-s2">    {</span>
+<span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">data</span> <span class="pl-k">=</span> <span class="pl-vo">$input</span>;</span>
+<span class="pl-s2">    }</span>
+<span class="pl-s2"></span>
+<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">complicate</span>()</span>
+<span class="pl-s2">    {</span>
+<span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-s3">array_map</span>(<span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">data</span>, <span class="pl-st">function</span>(<span class="pl-vo">$value</span>) {</span>
+<span class="pl-s2">            <span class="pl-k">if</span> (<span class="pl-s3">is_int</span>(<span class="pl-vo">$value</span>)) {</span>
+<span class="pl-s2">                <span class="pl-k">return</span> <span class="pl-vo">$value</span> <span class="pl-k">*</span> <span class="pl-c1">2</span>;</span>
+<span class="pl-s2">            }</span>
+<span class="pl-s2">        });</span>
+<span class="pl-s2">    }</span>
+<span class="pl-s2">}</span></pre></div>
+
+<p>Common usage would be to filter and pick apart the user input for create/update:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-vo">$input</span> <span class="pl-k">=</span> [</span>
+<span class="pl-s2">    <span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>Push Operations<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s2">    <span class="pl-s1"><span class="pl-pds">'</span>desks<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">50</span>,</span>
+<span class="pl-s2">    <span class="pl-s1"><span class="pl-pds">'</span>employees<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [</span>
+<span class="pl-s2">        <span class="pl-s1"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>Jane<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s2">    ],</span>
+<span class="pl-s2">];</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-vo">$basic</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">BasicDecorator</span>(<span class="pl-vo">$input</span>);</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// Check if value for key exists</span></span>
+<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>has(<span class="pl-s1"><span class="pl-pds">'</span>desks<span class="pl-pds">'</span></span>);                      <span class="pl-c">// true</span></span>
+<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>has(<span class="pl-s1"><span class="pl-pds">'</span>chairs<span class="pl-pds">'</span></span>);                     <span class="pl-c">// false</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// Provide a default value if it doesn't exist</span></span>
+<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>get(<span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>);                       <span class="pl-c">// 'Push Operations'</span></span>
+<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>get(<span class="pl-s1"><span class="pl-pds">'</span>chairs<span class="pl-pds">'</span></span>, <span class="pl-c1">10</span>);                 <span class="pl-c">// 10</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// Get some of the data</span></span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>only(<span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>desks<span class="pl-pds">'</span></span>));        <span class="pl-c">// ['name' =&gt; 'Push Operations', 'desks' =&gt; 50]</span></span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>only([<span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>desks<span class="pl-pds">'</span></span>]));      <span class="pl-c">// ['name' =&gt; 'Push Operations', 'desks' =&gt; 50]</span></span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>except(<span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>));               <span class="pl-c">// ['desks' =&gt; 50, 'employees' =&gt; ['John', 'Jane']]</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// Get all of the data</span></span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>all());                        <span class="pl-c">// The $input array</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// Add data</span></span>
+<span class="pl-s2"><span class="pl-vo">$add</span> <span class="pl-k">=</span> [</span>
+<span class="pl-s2">    <span class="pl-s1"><span class="pl-pds">'</span>interns<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [</span>
+<span class="pl-s2">        <span class="pl-s1"><span class="pl-pds">'</span>Billy<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>Derrick<span class="pl-pds">'</span></span></span>
+<span class="pl-s2">    ],</span>
+<span class="pl-s2">];</span>
+<span class="pl-s2"><span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>merge(<span class="pl-vo">$add</span>);</span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>get(<span class="pl-s1"><span class="pl-pds">'</span>interns<span class="pl-pds">'</span></span>));               <span class="pl-c">// ['Billy', 'Derrick']</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-c">// You can redecorate the results of the decorator (with itself or another decorator) to do more manipulation.</span></span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-vo">$complex</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">ComplexDecorator</span>(<span class="pl-vo">$basic</span><span class="pl-k">-&gt;</span>all());</span>
+<span class="pl-s2"><span class="pl-s3">var_dump</span>(<span class="pl-vo">$complex</span><span class="pl-k">-&gt;</span>complicate());               <span class="pl-c">// [..., 'desks' =&gt; 100, ...];</span></span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/pushoperations">pushoperations</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

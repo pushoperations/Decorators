@@ -1,5 +1,5 @@
 {
-  "name" : "pushoperations/Decorators",
+  "name" : "pushoperations/decorators",
   "type" : "library",
   "description" : "A library of decorators.",
   "homepage" : "https://github.com/pushoperations/Decorators",

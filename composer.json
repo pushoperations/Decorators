@@ -15,7 +15,7 @@
   ],
   "require" : {
     "php" : ">=5.4.0",
-    "illuminate/support": "4.2.*"
+    "illuminate/support": "4.2.*|5.0.*|5.1.*"
   },
   "require-dev": {
     "sami/sami": "2.0.*",

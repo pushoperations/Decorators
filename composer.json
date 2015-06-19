@@ -24,8 +24,8 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Decorators\\": "src/",
-      "Decorators\\Tests\\": "tests/"
+      "Push\\Decorators\\": "src/",
+      "Push\\Decorators\\Tests\\": "tests/"
     }
   }
 }

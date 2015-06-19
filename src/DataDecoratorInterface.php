@@ -1,4 +1,4 @@
-<?php namespace Decorators;
+<?php namespace Push\Decorators;
 
 interface DataDecoratorInterface
 {

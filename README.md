@@ -62,8 +62,8 @@ A handy effect is that you can perform sanitization within the decorator's metho
 ## Examples
 
 ```php
-use Decorators\DataDecorator;
-use Decorators\DataDecoratorInterface;
+use Push\Decorators\DataDecorator;
+use Push\Decorators\DataDecoratorInterface;
 
 class BasicDecorator extends DataDecorator implements DataDecoratorInterface
 {

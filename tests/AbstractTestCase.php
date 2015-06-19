@@ -1,4 +1,4 @@
-<?php namespace Decorators\Tests;
+<?php namespace Push\Decorators\Tests;
 
 use ReflectionClass;
 

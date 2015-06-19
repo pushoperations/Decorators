@@ -1,7 +1,7 @@
-<?php namespace Decorators\Tests;
+<?php namespace Push\Decorators\Tests;
 
 use DateTime;
-use Decorators\DataDecorator;
+use Push\Decorators\DataDecorator;
 
 class DataDecoratorTest extends AbstractTestCase
 {
@@ -13,7 +13,7 @@ class DataDecoratorTest extends AbstractTestCase
             'datetime' => new DateTime,
         ];
 
-        parent::mockAbstract('Decorators\DataDecorator');
+        parent::mockAbstract('Push\Decorators\DataDecorator');
 
         $this->setProperty('data', $this->input);
         $this->decorator = $this->mocked;

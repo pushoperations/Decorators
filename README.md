@@ -31,7 +31,7 @@ Update your project's composer.json file to include Decorators:
 ```json
 {
     "require": {
-        "pushoperations/decorators": "dev-master"
+        "pushoperations/decorators": "1.*"
     }
 }
 ```

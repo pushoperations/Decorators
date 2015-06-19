@@ -1,4 +1,4 @@
-# Decorators (Name May Change)
+# Decorators
 
 [![Build Status](https://img.shields.io/travis/pushoperations/Decorators.svg)](https://travis-ci.org/pushoperations/Decorators)
 [![Coverage Status](https://img.shields.io/coveralls/pushoperations/Decorators.svg)](https://coveralls.io/r/pushoperations/Decorators)
@@ -11,7 +11,7 @@
 
 <!--[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3ab73b7b-5159-4bfe-8c85-2a15d03f9579/big.png)](https://insight.sensiolabs.com/projects/3ab73b7b-5159-4bfe-8c85-2a15d03f9579)-->
 
-A library to decorate arrays (especially Laravel Input) for manipulation and usage as a service to return data for object construction.
+A library to decorate arrays (especially Laravel's Input::) for manipulation and usage as a service to return data for object construction.
 
 Note: *this library may contain other patterns in the future*.
 
@@ -20,7 +20,7 @@ Note: *this library may contain other patterns in the future*.
 - [Installation](#install)
 - [Usage](#usage)
 - [Examples](#examples)
-- [API documentation](http://pushoperations.github.io/Decorators/)
+- [API documentation](http://pushoperations.github.io/Decorators/docs)
 
 ## Install
 
@@ -31,7 +31,7 @@ Update your project's composer.json file to include Decorators:
 ```json
 {
     "require": {
-        "pushoperations/decorators": "dev-master"
+        "pushoperations/decorators": "1.*"
     }
 }
 ```

@@ -5,12 +5,16 @@ use Decorators\DataDecorator;
 
 class DataDecoratorTest extends AbstractTestCase
 {
+    protected $dateTime;
+
     public function setUp()
     {
+        $this->dateTime = new DateTime();
+
         $this->input = [
             'number' => 40,
             'string' => 'this is a string',
-            'datetime' => new DateTime,
+            'datetime' => $this->dateTime,
         ];
 
         parent::mockAbstract('Decorators\DataDecorator');
@@ -73,14 +77,16 @@ class DataDecoratorTest extends AbstractTestCase
 
     public function testExcept()
     {
+        $dateTime = new DateTime();
+
         $one = [
             'string' => 'this is a string',
-            'datetime' => new DateTime,
+            'datetime' => $dateTime,
         ];
         $this->assertEquals($one, $this->decorator->except('number'));
 
         $multi = [
-            'datetime' => new DateTime,
+            'datetime' => $dateTime,
         ];
         $this->assertEquals($multi, $this->decorator->except('number', 'string'));
 
@@ -109,7 +115,7 @@ class DataDecoratorTest extends AbstractTestCase
 
         $sum = [
             'number' => 40,
-            'datetime' => new DateTime,
+            'datetime' => $this->dateTime,
             'array' => [
                 'a', 'b',
             ],
